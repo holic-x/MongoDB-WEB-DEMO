@@ -1,0 +1,49 @@
+# custom system config
+custom:
+  # 登录模式
+  loginMode: #
+  # 开发模式
+  devMode: #
+  # 设定项目版本(用于切换不同环境下的数据库用户引用:关联UAS信息)
+  # projectVersion: DEV-VER
+  common:
+    # uploadPath: /static/upload/prodImages 对应tomcat下
+    uploadPath: /static/upload/prodImages # 对应根目录下
+#    uploadPath: E:/dev-workspace/ebProject/upload/prodImages
+
+# springboot config
+server:
+  # 服务器的HTTP端口，默认为80
+  port: 8080
+  servlet:
+    # 应用的访问路径(指定访问前缀)
+    context-path: /ebProject
+
+# mongoDB config - 链接数据库
+# remark：user=myuser,password=000000,host=127.0.0.1/localhsot,port=27017,db=eb_db
+spring:
+  data:
+    mongodb:
+      uri: mongodb://myuser:000000@127.0.0.1:27017/eb_db
+    # 逐一配置，适合未设置密码的MongoDB
+    # spring.data.mongodb.database=test
+    # spring.data.mongodb.host=host
+    # spring.data.mongodb.port=27017
+
+  # 静态资源发布
+  # resources:
+    # static-locations: classpath:/static/,classpath:/upload/
+
+  # 静态资源文件映射
+  mvc:
+    static-path-pattern: /static/**
+
+ # mongodb开启Debug模式
+  # MongoRepository
+logging:
+  level:
+    org.springframework.data.mongodb.repository: DEBUG
+    # MongoTemplate
+    org.springframework.data.mongodb.core: DEBUG
+
+
